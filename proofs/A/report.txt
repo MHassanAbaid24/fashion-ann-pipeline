@@ -1,0 +1,13 @@
+git log --oneline --graph --all: shows compact commits, branches, and merge/rebase shape.
+
+git log --stat -3: shows files changed and line counts for the last three commits.
+
+git log -p -1: shows the actual patch of the latest commit.
+
+git log main..dev: shows commits reachable from dev but not main.
+
+git diff shows unstaged changes; git diff --staged shows staged changes.
+
+main..dev compares the tips directly; main...dev compares dev against the common ancestor with main.
+
+Soft reset removes the commit but keeps changes staged; hard reset removes the commit and discards its changes.
