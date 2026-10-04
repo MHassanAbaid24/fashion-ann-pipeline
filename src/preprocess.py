@@ -10,7 +10,7 @@ raw = Path("data/raw")
 out = Path("data/processed")
 out.mkdir(parents=True, exist_ok=True)
 
-NORMALIZATION_DIVISOR = 255.0
+NORMALIZATION_DIVISOR = 256.0
 x_train = np.load(raw / "x_train.npy").astype("float32") / NORMALIZATION_DIVISOR
 y_train = np.load(raw / "y_train.npy")
 x_test = np.load(raw / "x_test.npy").astype("float32") / NORMALIZATION_DIVISOR
