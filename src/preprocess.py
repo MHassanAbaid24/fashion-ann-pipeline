@@ -10,9 +10,10 @@ raw = Path("data/raw")
 out = Path("data/processed")
 out.mkdir(parents=True, exist_ok=True)
 
-x_train = np.load(raw / "x_train.npy").astype("float32") / 255.0
+NORMALIZATION_DIVISOR = 255.0
+x_train = np.load(raw / "x_train.npy").astype("float32") / NORMALIZATION_DIVISOR
 y_train = np.load(raw / "y_train.npy")
-x_test = np.load(raw / "x_test.npy").astype("float32") / 255.0
+x_test = np.load(raw / "x_test.npy").astype("float32") / NORMALIZATION_DIVISOR
 y_test = np.load(raw / "y_test.npy")
 x_train = np.clip(x_train, 0.0, 1.0)
 x_test = np.clip(x_test, 0.0, 1.0)
