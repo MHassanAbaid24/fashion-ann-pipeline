@@ -1,0 +1,1 @@
+After changing only train.dense_units, DVC re-ran the train stage because that parameter belongs to train. The evaluate stage also re-ran because the model changed. The prepare and preprocess stages were skipped because none of their dependencies or parameters changed.

@@ -1,0 +1,60 @@
+dvc repro
+Stage 'prepare' didn't change, skipping                                                                                                        
+Stage 'preprocess' didn't change, skipping                                                                                                     
+Running stage 'train':                                                                                                                         
+> python src/train.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791117020.061496  111329 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1791117020.121988  111329 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791117021.665651  111329 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+/home/muhammad-hassan/Study/Semester 7/MLOps/A1/fashion-ann-pipeline/venv/lib/python3.12/site-packages/keras/src/layers/reshaping/flatten.py:37: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+E0000 00:00:1791117023.067352  111329 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+W0000 00:00:1791117023.232340  111329 cpu_allocator_impl.cc:82] Allocation of 169344000 exceeds 10% of free system memory.
+Epoch 1/10
+844/844 - 3s - 3ms/step - accuracy: 0.8101 - loss: 0.5381 - val_accuracy: 0.8572 - val_loss: 0.4081
+Epoch 2/10
+844/844 - 2s - 2ms/step - accuracy: 0.8565 - loss: 0.3983 - val_accuracy: 0.8715 - val_loss: 0.3484
+Epoch 3/10
+844/844 - 2s - 2ms/step - accuracy: 0.8685 - loss: 0.3580 - val_accuracy: 0.8845 - val_loss: 0.3202
+Epoch 4/10
+844/844 - 2s - 2ms/step - accuracy: 0.8750 - loss: 0.3398 - val_accuracy: 0.8845 - val_loss: 0.3180
+Epoch 5/10
+844/844 - 2s - 2ms/step - accuracy: 0.8810 - loss: 0.3232 - val_accuracy: 0.8893 - val_loss: 0.2990
+Epoch 6/10
+844/844 - 2s - 2ms/step - accuracy: 0.8850 - loss: 0.3068 - val_accuracy: 0.8898 - val_loss: 0.3021
+Epoch 7/10
+844/844 - 2s - 2ms/step - accuracy: 0.8890 - loss: 0.2970 - val_accuracy: 0.8892 - val_loss: 0.2935
+Epoch 8/10
+844/844 - 2s - 2ms/step - accuracy: 0.8943 - loss: 0.2850 - val_accuracy: 0.8885 - val_loss: 0.2917
+Epoch 9/10
+844/844 - 2s - 2ms/step - accuracy: 0.8967 - loss: 0.2768 - val_accuracy: 0.8947 - val_loss: 0.2868
+Epoch 10/10
+844/844 - 2s - 2ms/step - accuracy: 0.8984 - loss: 0.2679 - val_accuracy: 0.8908 - val_loss: 0.2953
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+Model and history saved to models/
+Updating lock file 'dvc.lock'                                                                                                                  
+
+Running stage 'evaluate':                                                                                                                      
+> python src/evaluate.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791117044.661436  111865 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1791117044.708884  111865 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791117046.008892  111865 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1791117046.935079  111865 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+Test accuracy: 0.8779
+Updating lock file 'dvc.lock'                                                                                                                  
+
+To track the changes with git, run:
+
+        git add dvc.lock
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+Use `dvc push` to send your updates to remote storage.

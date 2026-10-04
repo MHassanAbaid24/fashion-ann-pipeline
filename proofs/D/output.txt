@@ -1,0 +1,75 @@
+dvc repro
+Running stage 'prepare':                                                                                                                       
+> python src/prepare.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791116786.434402  109667 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1791116786.480776  109667 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791116787.862828  109667 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+Raw Fashion-MNIST saved to data/raw/
+Generating lock file 'dvc.lock'                                                                                                                
+Updating lock file 'dvc.lock'
+
+Running stage 'preprocess':                                                                                                                    
+> python src/preprocess.py
+Processed data saved to data/processed/
+Updating lock file 'dvc.lock'                                                                                                                  
+
+Running stage 'train':                                                                                                                         
+> python src/train.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791116792.026548  109735 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1791116792.489680  109735 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791116793.867797  109735 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+/home/muhammad-hassan/Study/Semester 7/MLOps/A1/fashion-ann-pipeline/venv/lib/python3.12/site-packages/keras/src/layers/reshaping/flatten.py:37: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+E0000 00:00:1791116795.314542  109735 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+W0000 00:00:1791116795.531131  109735 cpu_allocator_impl.cc:82] Allocation of 169344000 exceeds 10% of free system memory.
+Epoch 1/10
+844/844 - 2s - 2ms/step - accuracy: 0.7978 - loss: 0.5729 - val_accuracy: 0.8613 - val_loss: 0.4062
+Epoch 2/10
+844/844 - 1s - 2ms/step - accuracy: 0.8530 - loss: 0.4146 - val_accuracy: 0.8725 - val_loss: 0.3539
+Epoch 3/10
+844/844 - 1s - 2ms/step - accuracy: 0.8629 - loss: 0.3792 - val_accuracy: 0.8730 - val_loss: 0.3518
+Epoch 4/10
+844/844 - 1s - 2ms/step - accuracy: 0.8709 - loss: 0.3534 - val_accuracy: 0.8795 - val_loss: 0.3328
+Epoch 5/10
+844/844 - 1s - 2ms/step - accuracy: 0.8785 - loss: 0.3339 - val_accuracy: 0.8878 - val_loss: 0.3094
+Epoch 6/10
+844/844 - 2s - 2ms/step - accuracy: 0.8821 - loss: 0.3217 - val_accuracy: 0.8893 - val_loss: 0.3057
+Epoch 7/10
+844/844 - 1s - 2ms/step - accuracy: 0.8856 - loss: 0.3105 - val_accuracy: 0.8857 - val_loss: 0.3081
+Epoch 8/10
+844/844 - 2s - 2ms/step - accuracy: 0.8886 - loss: 0.3027 - val_accuracy: 0.8942 - val_loss: 0.2929
+Epoch 9/10
+844/844 - 2s - 2ms/step - accuracy: 0.8909 - loss: 0.2919 - val_accuracy: 0.8928 - val_loss: 0.2977
+Epoch 10/10
+844/844 - 1s - 2ms/step - accuracy: 0.8941 - loss: 0.2864 - val_accuracy: 0.8887 - val_loss: 0.2923
+WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+Model and history saved to models/
+Updating lock file 'dvc.lock'                                                                                                                  
+
+Running stage 'evaluate':                                                                                                                      
+> python src/evaluate.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791116811.962261  110250 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+I0000 00:00:1791116812.007766  110250 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791116813.796012  110250 cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+E0000 00:00:1791116814.709242  110250 cuda_platform.cc:52] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+Test accuracy: 0.8787
+Updating lock file 'dvc.lock'                                                                                                                  
+
+To track the changes with git, run:
+
+        git add data/.gitignore .gitignore models/.gitignore dvc.lock
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+Use `dvc push` to send your updates to remote storage.
