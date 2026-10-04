@@ -1,0 +1,6 @@
+[core]
+    remote = gdrive_storage
+['remote "gdrive_storage"']
+    url = gdrive://1AqH7QRaJErhHp-RRmaSnIm0YDIMGHPtA
+    gdrive_client_id = REMOVED_GOOGLE_CLIENT_ID
+    gdrive_client_secret = REMOVED_GOOGLE_CLIENT_SECRET
